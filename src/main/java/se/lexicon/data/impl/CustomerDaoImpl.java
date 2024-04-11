@@ -9,12 +9,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class CustomerDaoImpl implements CustomerDao {
-
     private List<Customer> storage = new ArrayList<>();
 
     @Override
     public Customer create(Customer customer) {
-        //todo: Add necessary validations
+        if (customer == null) throw new IllegalArgumentException("Customer can't be null");
         int id = CustomerSequencer.nextId();
         customer.setId(id);
         storage.add(customer);
